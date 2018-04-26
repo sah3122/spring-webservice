@@ -3,12 +3,12 @@ package com.sorkehdcjf.webservice.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.transaction.Transactional;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.sorkehdcjf.webservice.domain.posts.PostRepository;
 import com.sorkehdcjf.webservice.domain.posts.PostsMainResponseDto;
+import com.sorkehdcjf.webservice.domain.posts.PostsRepository;
 import com.sorkehdcjf.webservice.domain.posts.PostsSaveRequestDto;
 
 import lombok.AllArgsConstructor;
@@ -16,16 +16,17 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 @Service
 public class PostsService {
-	private PostRepository postRepository;
+	@Autowired
+	private PostsRepository postsRepository;
 	
 	@Transactional
 	public long save(PostsSaveRequestDto dto) {
-		return postRepository.save(dto.toEntity()).getId();
+		return postsRepository.save(dto.toEntity()).getId();
 	}
 	
 	@Transactional(readOnly = true)
 	public List<PostsMainResponseDto> findAllDesc() {
-		return postRepository.findAllDesc()
+		return postsRepository.findAllDesc()
 				.map(PostsMainResponseDto::new)
 				.collect(Collectors.toList());
 	}

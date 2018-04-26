@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.sorkehdcjf.webservice.domain.posts.PostRepository;
 import com.sorkehdcjf.webservice.domain.posts.Posts;
+import com.sorkehdcjf.webservice.domain.posts.PostsRepository;
 import com.sorkehdcjf.webservice.domain.posts.PostsSaveRequestDto;
 
 @RunWith(SpringRunner.class)
@@ -20,11 +20,11 @@ public class PostsServiceTest {
 	private PostsService postsService;
 	
 	@Autowired
-	private PostRepository postRepository;
+	private PostsRepository postsRepository;
 	
 	@After
 	public void cleanUp() {
-		postRepository.deleteAll();
+		postsRepository.deleteAll();
 	}
 	
 	@Test
@@ -37,7 +37,7 @@ public class PostsServiceTest {
 		
 		postsService.save(dto);
 		
-		Posts posts = postRepository.findAll().get(0);
+		Posts posts = postsRepository.findAll().get(0);
 		assertThat(posts.getAuthor()).isEqualTo(dto.getAuthor()); 
 		assertThat(posts.getContent()).isEqualTo(dto.getContent()); 
 		assertThat(posts.getTitle()).isEqualTo(dto.getTitle());

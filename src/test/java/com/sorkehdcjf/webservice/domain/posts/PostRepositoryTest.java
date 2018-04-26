@@ -18,22 +18,22 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class PostRepositoryTest {
 	@Autowired
-	PostRepository postRepository;
+	PostsRepository postsRepository;
 	
 	@After
 	public void cleanUp() {
-		postRepository.deleteAll();
+		postsRepository.deleteAll();
 	}
 	
 	@Test
 	public void 게시글저장_불러오기() {
-		postRepository.save(Posts.builder()
+		postsRepository.save(Posts.builder()
 				.title("테스트 게시글")
 				.content("테스트 본문")
 				.author("")
 				.build());
 		
-		List<Posts> postLists = postRepository.findAll();
+		List<Posts> postLists = postsRepository.findAll();
 		
 		Posts posts = postLists.get(0);
 		assertThat(posts.getTitle(), is("테스트 게시글")); 
@@ -44,13 +44,13 @@ public class PostRepositoryTest {
 	public void BaseTimeEntity_등록 () { 
 		LocalDateTime now = LocalDateTime.now();
 		
-		postRepository.save(Posts.builder()
+		postsRepository.save(Posts.builder()
 				.title("게시글")
 				.content("내용")
 				.author("저자")
 				.build());
 		
-		List<Posts> postLists = postRepository.findAll();
+		List<Posts> postLists = postsRepository.findAll();
 		
 		Posts posts = postLists.get(0);
 		assertTrue(posts.getCreatedDate().isAfter(now)); 

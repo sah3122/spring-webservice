@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sorkehdcjf.webservice.domain.posts.PostRepository;
 import com.sorkehdcjf.webservice.domain.posts.PostsSaveRequestDto;
 import com.sorkehdcjf.webservice.service.PostsService;
 
