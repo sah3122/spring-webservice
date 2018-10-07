@@ -37,3 +37,17 @@ deploy:
     on:
       repo: sah3122/spring-webservice #github 주소
       branch: master
+
+    - provider: codedeploy
+      access_key_id: $AWS_ACCESS_KEY #travisc settings 저장값
+      secret_access_key: $AWS_SECRET_KEY #travisc settings 저장값
+      bucket: donghcul-spring-webservice-deploy #S3 버킷
+      key: spring-webservice.zip
+      bundle_type: zip
+      application: spring-webservice
+      deployment_group: spring-webservice-group
+      region: ap-northeast-2
+      wait-until-deployed: true
+      on:
+        repo: sah3122/spring-webservice
+        branch: master
