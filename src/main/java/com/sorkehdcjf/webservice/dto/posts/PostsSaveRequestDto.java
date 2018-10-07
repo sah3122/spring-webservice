@@ -1,5 +1,6 @@
-package com.sorkehdcjf.webservice.domain.posts;
+package com.sorkehdcjf.webservice.dto.posts;
 
+import com.sorkehdcjf.webservice.domain.posts.Posts;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

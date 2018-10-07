@@ -1,9 +1,10 @@
-package com.sorkehdcjf.webservice.domain.posts;
+package com.sorkehdcjf.webservice.dto.posts;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
+import com.sorkehdcjf.webservice.domain.posts.Posts;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Getter;
