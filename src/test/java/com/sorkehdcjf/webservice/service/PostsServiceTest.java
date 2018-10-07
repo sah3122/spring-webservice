@@ -30,9 +30,9 @@ public class PostsServiceTest {
 	@Test
 	public void Dto데이터가_posts테이블에_저장() {
 		PostsSaveRequestDto dto = PostsSaveRequestDto.builder()
-													.title("title")
-													.content("content")
-													.author("author")
+													.title("테스트1")
+													.content("테스트1의 본문")
+													.author("test1@gmail.com")
 													.build();
 		
 		postsService.save(dto);
