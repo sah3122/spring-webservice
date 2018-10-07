@@ -19,6 +19,10 @@ notifications:
   email:
     recipients:
       - sorkehdcjf@gmail.com
+before_deploy:
+  - zip -r spring-webservice *
+  - mkdir -p deploy
+  - mv spring-webservice.zip deploy/spring-webservice.zip
 
 deploy:
   - provider: s3
@@ -29,6 +33,7 @@ deploy:
     skip_cleanup: true
     acl: public_read
     wait-until-deployed: true
+    local-dir: deploy
     on:
       repo: sah3122/spring-webservice #github 주소
       branch: master
